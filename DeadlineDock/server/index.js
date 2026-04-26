@@ -75,6 +75,10 @@ app.get('/api/health', (req, res) => {
 const CLIENT_DIR = path.join(__dirname, '../client');
 app.use(express.static(CLIENT_DIR));
 
+app.get('/favicon.png', (req, res) => {
+  res.sendFile(path.join(CLIENT_DIR, 'favicon.png'));
+});
+
 // SPA fallback — serve index.html for any non-API route
 app.get('*', (req, res) => {
   if (!req.path.startsWith('/api/')) {
